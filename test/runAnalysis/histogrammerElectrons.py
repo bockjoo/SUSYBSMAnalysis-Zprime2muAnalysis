@@ -11,14 +11,6 @@ import SUSYBSMAnalysis.Zprime2muAnalysis.ElectronSelection_cff as ElectronSelect
 import SUSYBSMAnalysis.Zprime2muAnalysis.ElectronSelection2016_cff as ElectronSelection2016
 import SUSYBSMAnalysis.Zprime2muAnalysis.ElectronSelection2018_cff as ElectronSelection2018
 
-from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
-if year == 2016:
-    setupEgammaPostRecoSeq(process, era='2016-Legacy')
-if year == 2017:
-    setupEgammaPostRecoSeq(process, era='2017-Nov17ReReco')
-if year == 2018:
-	print "setting up"
-	setupEgammaPostRecoSeq(process, era='2018-Prompt')
 
 from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
 if year == 2016 or year == 2017:
@@ -76,7 +68,7 @@ for cut_name, Selection in cuts.iteritems():
 	leptons.hlt_filter_ele = cms.vstring('hltDiEle33CaloIdLMWPMS2UnseededFilter','hltDiEle33CaloIdLGsfTrkIdVLDPhiUnseededFilter')
 
 
-    leptons.electron_src = cms.InputTag('slimmedElectrons',"","Zprime2muAnalysis")
+    #leptons.electron_src = cms.InputTag('slimmedElectrons',"","Zprime2muAnalysis")
     setattr(process, leptons_name, leptons)
     path_list.append(leptons)
 	
@@ -174,9 +166,9 @@ for cut_name, Selection in cuts.iteritems():
     process.load('SUSYBSMAnalysis.Zprime2muAnalysis.DielectronPreselector_cfi')
     process.load("SUSYBSMAnalysis.Zprime2muAnalysis.EventCounter_cfi")
     if year == 2016 or year == 2017:
-    	pobj = process.EventCounter * process.egammaPostRecoSeq * process.prefiringweight * process.dielectronPreseletor *  process.muonPhotonMatchMiniAOD * reduce(lambda x,y: x*y, path_list)
+    	pobj = process.EventCounter * process.prefiringweight * process.dielectronPreseletor *  process.muonPhotonMatchMiniAOD * reduce(lambda x,y: x*y, path_list)
     else:	
-	pobj = process.EventCounter * process.egammaPostRecoSeq * process.dielectronPreseletor *  process.muonPhotonMatchMiniAOD * reduce(lambda x,y: x*y, path_list)
+	pobj = process.EventCounter * process.dielectronPreseletor *  process.muonPhotonMatchMiniAOD * reduce(lambda x,y: x*y, path_list)
 
     path = cms.Path(pobj)
     setattr(process, pathname, path)
