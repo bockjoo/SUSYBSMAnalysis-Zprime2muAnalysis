@@ -43,13 +43,7 @@ bool TTbarSelection::filter(edm::Event& event, const edm::EventSetup&) {
   float py2 =0;
   float pz1 =0;
   float pz2 =0;
-  Double_t phi1 = -999;
-  Double_t phi2 = -999;
   float massTT = 1.;
-  int count = 0;
-
-
-  
 
    for (; genp != genParticles->end(); genp++) {
    
