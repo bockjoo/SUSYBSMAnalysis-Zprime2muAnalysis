@@ -77,7 +77,7 @@ class PSDrawer:
         div = self.divs[page_type]
         levels = self.levels[page_type]
         if div[0]*div[1] < len(levels):
-            raise RuntimeError, 'not enough divisions (%i) for number of levels (%i)' % (div[0]*div[1], len(levels))
+            raise RuntimeError ( 'not enough divisions (%i) for number of levels (%i)' % (div[0]*div[1], len(levels)) ) # bockjoo
         return div, levels
 
     def rec_level_page(self, histos, page_type, histo_base_name, page_title, draw_opt='', log_scale=False, fit_gaus=False, hist_cmds=None, prof2rms=False, fit_other=None):
@@ -106,12 +106,12 @@ class PSDrawer:
         self.canvas.Update()
         self.ps.Close()
         if self.as_pdf:
-            print 'Converting to PDF...'
+            print ('Converting to PDF...') # bockjoo
             os.system('ps2pdf %s' % self.filename)
             os.system('rm %s' % self.filename)
         else:
             # New ROOT TPostScript breaks gv page number titles.
-            print 'PSDrawer through with file, sedding titles...'
+            print ('PSDrawer through with file, sedding titles...') # bockjoo
             os.system("sed --in-place -e 's/Page: (number /Page: (/g' %s" % self.filename)
         self.closed = True
 

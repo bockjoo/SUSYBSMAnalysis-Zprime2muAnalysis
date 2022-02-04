@@ -23,7 +23,7 @@ muonTriggerMatchHLTMuonsMiniAOD = cms.EDProducer('PATTriggerMatcherDRLessByR',
 def make_string_cut_for_trigger_matching( list_path_names, list_filters_pt, extra=''):
   cut = ''
   if len(list_path_names) != len(list_filters_pt):
-    print 'len(list_path_names) != len(list_filters_pt) -> return ', cut
+    print ('len(list_path_names) != len(list_filters_pt) -> return ', cut) # bockjoo
     return cut
   for i, f in enumerate(list_path_names):
     if f != list_path_names[-1]:

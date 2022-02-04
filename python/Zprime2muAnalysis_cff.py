@@ -110,7 +110,7 @@ def switch_hlt_process_name(process, name):
         def enter(self, visitee):
             for attr in dir(visitee):
                 if str(getattr(visitee, attr)) == 'HLT':
-                    print 'warning: visitee %s, attribute %s has value HLT' % (visitee, attr)
+                    print ('warning: visitee %s, attribute %s has value HLT' % (visitee, attr)) # bockjoo
         def leave(self, visitee):
             pass
     from PhysicsTools.PatAlgos.tools.helpers import massSearchReplaceAnyInputTag
@@ -127,7 +127,7 @@ def switch_reco_process_name(process, name):
         def enter(self, visitee):
             for attr in dir(visitee):
                 if str(getattr(visitee, attr)) == 'HLT':
-                    print 'warning: visitee %s, attribute %s has value HLT' % (visitee, attr)
+                    print ('warning: visitee %s, attribute %s has value HLT' % (visitee, attr)) # bockjoo
         def leave(self, visitee):
             pass
     from PhysicsTools.PatAlgos.tools.helpers import massSearchReplaceAnyInputTag

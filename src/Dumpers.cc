@@ -10,6 +10,7 @@
 #include "DataFormats/TrackReco/interface/Track.h"
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "FWCore/Common/interface/TriggerNames.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h" // bockjoo
 #include "SUSYBSMAnalysis/Zprime2muAnalysis/src/Dumpers.h"
 #include "SUSYBSMAnalysis/Zprime2muAnalysis/src/PATUtilities.h"
 #include "SUSYBSMAnalysis/Zprime2muAnalysis/src/TrackUtilities.h"
@@ -22,6 +23,7 @@ int mlprintf(const char* category, const char* fmt, ...) {
   int ret = vsnprintf(buf, bufsize, fmt, args);
   va_end(args);
   edm::LogInfo(category) << buf;
+  //bockjoo edm::LogInfo("category") << buf;
   return ret;
 }
 

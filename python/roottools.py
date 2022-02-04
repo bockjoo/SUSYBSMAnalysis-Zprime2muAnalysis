@@ -83,7 +83,7 @@ def binomial_divide(h1, h2, confint=clopper_pearson, force_lt_1=True):
     nbins = h1.GetNbinsX()
     xax = h1.GetXaxis()
     if h2.GetNbinsX() != nbins: # or xax2.GetBinLowEdge(1) != xax.GetBinLowEdge(1) or xax2.GetBinLowEdge(nbins) != xax.GetBinLowEdge(nbins):
-        raise ValueError, 'incompatible histograms to divide'
+        raise ValueError ('incompatible histograms to divide') # bockjoo
     x = []
     y = []
     exl = []
@@ -99,7 +99,7 @@ def binomial_divide(h1, h2, confint=clopper_pearson, force_lt_1=True):
 
         p_hat = float(s)/t
         if s > t and force_lt_1:
-            print 'warning: bin %i has p_hat > 1, in interval forcing p_hat = 1' % ibin
+            print ('warning: bin %i has p_hat > 1, in interval forcing p_hat = 1' % ibin) # bockjoo
             s = t
         rat, a,b = confint(s,t)
         #print ibin, s, t, a, b
@@ -170,7 +170,7 @@ def draw_in_order(hists, draw_cmds=''):
     hists = [(h, h.GetMaximum()) for h in hists]
     hists.sort(key=lambda x: x[1], reverse=True)
     for h,m in hists:
-        print draw_cmds
+        print (draw_cmds) # bockjoo
         h.Draw(draw_cmds)
         if 'same' not in draw_cmds:
             draw_cmds += ' same'

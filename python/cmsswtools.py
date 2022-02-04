@@ -85,7 +85,7 @@ def set_preferred_alignment(process, name, connect, **kwargs):
     '''
 
     if len(kwargs) == 0:
-        raise ValueError, 'must specify at least one record parameter'
+        raise ValueError ( 'must specify at least one record parameter' ) # bockjoo
     
     from CondCore.DBCommon.CondDBSetup_cfi import CondDBSetup
     alignment_source = cms.ESSource('PoolDBESSource',

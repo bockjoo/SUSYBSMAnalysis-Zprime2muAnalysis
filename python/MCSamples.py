@@ -53,7 +53,7 @@ class sample(object):
         dst = os.path.join('/uscmst1b_scratch/lpc1/3DayLifetime/tucker', self.name) 
         os.system('mkdir ' + dst)
         for fn in self.filenames:
-            print fn
+            print (fn) # bockjoo
             if redump_existing or not os.path.isfile(os.path.join(dst, os.path.basename(fn))):
                 os.system('dccp ~%s %s/' % (fn,dst))
 
@@ -140,21 +140,21 @@ if __name__ == '__main__':
     if False:
         from dbstools import dbsparents
         for s in samples:
-            print s.dataset
+            print (s.dataset) # bockjoo
             parents = dbsparents(s.dataset)
             for parent in parents:
                 for line in os.popen('dbss rel %s' % parent):
                     if 'CMSSW' in line:
-                        print parent, line,
+                        print (parent, line,) # bockjoo
             print
 
     if False:
         import os
         from dbstools import dbsparents
         for s in [ww,wz,zz]:
-            print s.dataset
+            print (s.dataset) # bockjoo
             parents = dbsparents(s.dataset)
-            print parents
+            print (parents) # bockjoo
             os.system('dbsconfig %s > %s' % (parents[-1], s.name))
 
         os.system('dbss nevents %s' % x.replace('RECO','RAW'))
@@ -164,12 +164,12 @@ if __name__ == '__main__':
         import os
         from dbstools import dbsparents
         for s in samples:
-            print s.dataset
+            print (s.dataset) # bockjoo
             def fuf(y):
                 x = os.popen(y).read()
                 for line in x.split('\n'):
                     try:
-                        print int(line)
+                        print (int(line)) # bockjoo
                     except ValueError:
                         pass
             fuf('dbss nevents %s' % s.dataset)
@@ -177,7 +177,7 @@ if __name__ == '__main__':
 
     if False:
         for s in samples:
-            print s.name
+            print (s.name) # bockjoo
             os.system('grep "total events" ~/nobackup/crab_dirs/384p3/publish_logs/publish.crab_datamc_%s' % s.name)
             os.system('grep "total events" ~/nobackup/crab_dirs/413p2/publish_logs/publish.crab_datamc_%s' % s.name)
             print
@@ -188,12 +188,12 @@ if __name__ == '__main__':
             assert fn.startswith('/store')
             fn = '/pnfs/cms/WAX/11' + fn
             cmd = 'dccp %s ~/scratch/wjets/' % fn
-            print cmd
+            print (cmd) # bockjoo
             os.system(cmd)
 
     if False:
         for s in samples:
-            print s.name
+            print (s.name) # bockjoo
             os.system('dbss site %s' % s.dataset)
             print
 
@@ -209,4 +209,4 @@ if __name__ == '__main__':
                     continue
                 c.append(n)
             c.sort()
-            print s.name, c
+            print (s.name, c) # bockjoo

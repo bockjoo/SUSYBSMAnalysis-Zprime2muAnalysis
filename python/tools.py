@@ -4,13 +4,13 @@ import os, cPickle, gzip
 
 def big_warn(s):
     x = '#' * len(s)
-    print x
-    print x
-    print x
-    print s
-    print x
-    print x
-    print x
+    print (x) # bockjoo
+    print (x) # bockjoo
+    print (x) # bockjoo
+    print (s) # bockjoo
+    print (x) # bockjoo
+    print (x) # bockjoo
+    print (x) # bockjoo
 
 def files_from_dbs(dataset, ana02=True):
     # could use DBSAPI but this is easier
@@ -108,12 +108,12 @@ def to_pickle(obj, fn, proto=-1, comp=False):
 __all__ = ['big_warn', 'files_from_dbs', 'parse_enum', 'rec_level_code', 'rec_levels', 'replace_all', 'strip_comments']
 
 if __name__ == '__main__':
-    print 'test replace_all:'
-    print replace_all("""
+    print ('test replace_all:') # bockjoo
+    print (replace_all("""
     line 1; // a comment
     line 2;
     line 3  a sdg     g;
-    """, '//', '\n', '\n')
-    print 'parse_enum test', parse_enum('src/SUSYBSMAnalysis/Zprime2muAnalysis/src/RecLevelHelper.h', 'RecLevel')
-    print 'parse_enum test', parse_enum('src/SUSYBSMAnalysis/Zprime2muAnalysis/src/CutHelper.h',      'CutResult')
+    """, '//', '\n', '\n')) # bockjoo
+    print ('parse_enum test', parse_enum('src/SUSYBSMAnalysis/Zprime2muAnalysis/src/RecLevelHelper.h', 'RecLevel')) # bockjoo
+    print ('parse_enum test', parse_enum('src/SUSYBSMAnalysis/Zprime2muAnalysis/src/CutHelper.h',      'CutResult')) # bockjoo
    

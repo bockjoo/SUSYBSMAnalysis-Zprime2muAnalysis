@@ -30,7 +30,7 @@ holes = []
 runs_to_remove_from_prompt  = range(first_run, last_rereco_run+1)
 runs_to_remove_from_dcsonly = range(first_run, last_prompt_run+1)
 for hole in holes:
-    print 'goodlumis warning: re-adding "hole" run %i from DCS-only list' % hole
+    print ('goodlumis warning: re-adding "hole" run %i from DCS-only list' % hole) # bockjoo
     runs_to_remove_from_dcsonly.remove(hole)
 
 #DCSOnly_ll           = LumiList('/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions15/13TeV/DCSOnly/json_DCSONLY.txt')
@@ -139,8 +139,8 @@ def all_lls():
     return [(x, eval(x + '_ll')) for x in all_ll_names]
 
 for base_name, ll in all_lls():
-    exec '%s_ll = ll - to_remove' % base_name
-    exec '%s = for_cmssw(%s_ll)' % (base_name, base_name)
+    exec ('%s_ll = ll - to_remove' % base_name) # bockjoo
+    exec ('%s = for_cmssw(%s_ll)' % (base_name, base_name)) # bockjoo
 
 if __name__ == '__main__':
     import sys

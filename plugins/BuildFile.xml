@@ -72,6 +72,7 @@
   <use name="rootgraphics"/>
   <use name="CommonTools/UtilAlgos"/>
   <use name="DataFormats/PatCandidates"/>
+  <use name="SimDataFormats/GeneratorProducts"/> <!-- bockjoo -->
   <use name="SUSYBSMAnalysis/Zprime2muAnalysis"/>
 </library>
 

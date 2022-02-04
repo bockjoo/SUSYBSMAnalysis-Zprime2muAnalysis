@@ -633,8 +633,12 @@ edm::OrphanHandle<std::vector<T> > Zprime2muLeptonProducer_miniAOD::doLeptons(ed
 		//if (ele->scE1x5()/ele->scE5x5() > 0.83 || ele->scE2x5Max()/ele->scE5x5() > 0.94) passShowerShape = true;
 		//if (ele->e1x5()/ele->e5x5() > 0.83 || ele->e2x5Max()/ele->e5x5() > 0.94) passShowerShape = true;
                
-		passEmHadIso = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
-		passEmHadIso2018 = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
+		// bockjoo passEmHadIso = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
+		// DataFormats/EgammaCandidates/interface/GsfElectron.h
+                passEmHadIso = (ele->dr03HcalTowerSumEt(1) + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
+		// bockjoo passEmHadIso2018 = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
+		passEmHadIso2018 = (ele->dr03HcalTowerSumEt(1) + ele->dr03EcalRecHitSumEt()) < (2 + 0.03*sc_et + 0.28*rho);
+
 
 		//passHOverE = ele->hadronicOverEm() < (1./ele->userFloat("ecalEnergyPostCorr") + 0.05);
 		//passHOverE2018 = ele->hadronicOverEm() < (1./ele->userFloat("ecalEnergyPostCorr") + 0.05);
@@ -656,8 +660,10 @@ edm::OrphanHandle<std::vector<T> > Zprime2muLeptonProducer_miniAOD::doLeptons(ed
       }
       else if (fabs(ele->superCluster()->eta()) > 1.566 && fabs(ele->superCluster()->eta()) < 2.5 ){
 		passShowerShape = true;
-		passEmHadIso = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + 0.28*rho);
-		passEmHadIso2018 = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + (0.15+0.07*fabs(ele->superCluster()->eta()))*rho);
+		// bockjoo passEmHadIso = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + 0.28*rho);
+		passEmHadIso = (ele->dr03HcalTowerSumEt(1) + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + 0.28*rho);
+		// bockjoo passEmHadIso2018 = (ele->dr03HcalDepth1TowerSumEt() + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + (0.15+0.07*fabs(ele->superCluster()->eta()))*rho);
+		passEmHadIso2018 = (ele->dr03HcalTowerSumEt(1) + ele->dr03EcalRecHitSumEt()) < (2.5 + std::max(0.,0.03*(sc_et-50)) + (0.15+0.07*fabs(ele->superCluster()->eta()))*rho);
 		
 //		passHOverE = ele->hadronicOverEm() < (5./ele->userFloat("ecalEnergyPostCorr") + 0.05);
 //		passHOverE2018 = ele->hadronicOverEm() < ((-0.4+0.4*fabs(ele->superCluster()->eta())*rho)/ele->userFloat("ecalEnergyPostCorr") + 0.05);

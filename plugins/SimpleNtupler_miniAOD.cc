@@ -748,7 +748,8 @@ void SimpleNtupler_miniAOD::analyze(const edm::Event& event, const edm::EventSet
         bool metFilterAccept = true;
         for ( std::vector<edm::InputTag>::iterator filterTag_i = filterTags.begin(); filterTag_i != filterTags.end(); ++filterTag_i ) {
             std::string filterTag = (*filterTag_i).label();	
-            metFilterAccept  *= respat->accept(namespat.triggerIndex(filterTag));	
+            // bockjoo metFilterAccept  *= respat->accept(namespat.triggerIndex(filterTag));	
+            metFilterAccept  = ( metFilterAccept && respat->accept(namespat.triggerIndex(filterTag)) );	
         }
         t.METFilter = metFilterAccept;
     }

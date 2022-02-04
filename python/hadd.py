@@ -15,12 +15,12 @@ def hadd_ex(new_name, files):
     
     l = len(files)
     if l == 1:
-        print 'only one file specified, copying %s to %s' % (files[0], new_name)
+        print ('only one file specified, copying %s to %s' % (files[0], new_name)) # bockjoo
         assert os.system('cp -p %s %s' % (files[0], new_name)) == 0 # JMTBAD check return code
-        print '1 file copied to %s' % new_name
+        print ('1 file copied to %s' % new_name) # bockjoo
         return True
         
-    print 'hadding %i files to %s' % (l, new_name)
+    print ('hadding %i files to %s' % (l, new_name)) # bockjoo
     args = ['hadd', new_name] + files
 
     p = subprocess.Popen(args=args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -29,7 +29,7 @@ def hadd_ex(new_name, files):
     assert stderr is None
 
     if p.returncode != 0:
-        print '\033[36;7m PROBLEM hadding \033[m', new_name
+        print ('\033[36;7m PROBLEM hadding \033[m', new_name) # bockjoo
         #print p.stdout.read()
         return False
 
@@ -37,9 +37,9 @@ def hadd_ex(new_name, files):
     for line in stdout.split('\n'):
         if 'Source file' in line:
             max_file_num = max(max_file_num, int(line.split(':')[0].split(' ')[-1]))
-    print max_file_num, 'files merged to', new_name
+    print (max_file_num, 'files merged to', new_name) # bockjoo
     if max_file_num != l:
-        print '\033[36;7m PROBLEM hadding', new_name
+        print ('\033[36;7m PROBLEM hadding', new_name) # bockjoo
         return False
 
     return True
@@ -63,14 +63,14 @@ def hadd(new_name, files, chunk_size=900):
         new_files.append(this_fn)
 
         if not hadd_ex(this_fn, these):
-            print '\033[36;7m PROBLEM hadding \033[m', new_name, 'in chunks of', chunk_size, 'on', this_fn
+            print ('\033[36;7m PROBLEM hadding \033[m', new_name, 'in chunks of', chunk_size, 'on', this_fn) # bockjoo
             return False
 
     assert len(new_files) < chunk_size
 
     ok = hadd_ex(new_name, new_files)
     if not ok:
-        print '\033[36;7m PROBLEM hadding', new_name, 'in chunks of', chunk_size, 'assembling final file'
+        print ('\033[36;7m PROBLEM hadding', new_name, 'in chunks of', chunk_size, 'assembling final file') # bockjoo
         return False
 
     for fn in new_files:
