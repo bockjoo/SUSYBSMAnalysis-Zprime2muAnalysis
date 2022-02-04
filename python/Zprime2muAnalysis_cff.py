@@ -17,9 +17,9 @@ goodDataFiltersMiniAOD = [primaryVertexMiniAOD]
 #goodDataFiltersMiniAOD += metFilters
 
 
-from MuonPhotonMatch_cff import muonPhotonMatch, muonPhotonMatchMiniAOD
+from SUSYBSMAnalysis.Zprime2muAnalysis.MuonPhotonMatch_cff import muonPhotonMatch, muonPhotonMatchMiniAOD # bockjoo CMSSW_12_3_0_pre4
 # This default selection gets overwritten in histos.py
-from OurSelection2018_cff import allDimuons, dimuons, loose_cut
+from SUSYBSMAnalysis.Zprime2muAnalysis.OurSelection2018_cff import allDimuons, dimuons, loose_cut # bockjoo CMSSW_12_3_0_pre4
 
 leptons = cms.EDProducer('Zprime2muLeptonProducer',
                          muon_src = cms.InputTag('cleanPatMuonsTriggerMatch'), #JMTBAD changeme after new PAT tuples

@@ -23,7 +23,7 @@ noscraping = cms.EDFilter('FilterOutScraping',
                           numtrack = cms.untracked.uint32(10),
                           thresh = cms.untracked.double(0.25)
                           )
-from METFilterMiniAOD_cfi import defaultSelector
+from SUSYBSMAnalysis.Zprime2muAnalysis.METFilterMiniAOD_cfi import defaultSelector # bockjoo CMSSW_12_3_0_pre4
 
 primaryVertexMiniAOD = defaultSelector.clone()
 primaryVertexMiniAOD.flag = "Flag_goodVertices"
